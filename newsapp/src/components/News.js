@@ -22,6 +22,7 @@ export default class News extends Component {
 
 
 
+
   constructor() {
     super();
 
@@ -38,6 +39,7 @@ export default class News extends Component {
 
   updateNews = async () => {
 
+    this.props.setProgress(0);
     this.setState({ loading: true });
     let apiKey = '14bc42826e664185a097a05cc18bfa5a';
     let url = ` https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=${apiKey}`;
@@ -60,6 +62,10 @@ export default class News extends Component {
         error: 'Failed to fetch news data.',
       });
     }
+
+    this.props.setProgress(100);
+
+
 
   }
 
